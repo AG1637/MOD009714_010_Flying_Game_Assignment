@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
     private Transform objectTransform; // Reference to the object's transform
     public float shrinkDuration = 1f; // Duration of the shrinking animation
     public float spinSpeed = 360f; // Spin speed in degrees per second
-    public int CollectablesRemaining = 10;
+    
 
     private Vector3 targetPosition; // Final position to zip toward
 
@@ -46,15 +46,6 @@ public class Collectable : MonoBehaviour
             if (collectSound != null)
             {
                 audioSource.PlayOneShot(collectSound);
-            }
-
-            CollectablesRemaining = CollectablesRemaining - 1;
-            Debug.Log(CollectablesRemaining);
-
-            //Show Win Game screen is zero collectables remaining
-            if (CollectablesRemaining <= 0)
-            {
-                SceneManager.LoadSceneAsync(2);
             }
 
             // Disable the collider
