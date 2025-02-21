@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,9 @@ public class PlaneController : MonoBehaviour
     public float throttleSpeed = 10f;
     public float maxSpeed = 100f;
     public float minSpeed = 10f;
+    public GameObject bulletPrefab;
+    public float timer = 0;
+    public float attackCooldown = 0.25f;
 
     private float throttleInput = 0f;
     private Vector2 pitchRollInput; // Left Thumbstick or WASD
@@ -40,6 +44,10 @@ public class PlaneController : MonoBehaviour
         ReadInput();
         HandleThrottle();
         HandleFlightControls();
+        if (Input.GetMouseButton(0))
+        {
+            AttackCooldown();
+        }
     }
 
     private void ReadInput()
@@ -66,5 +74,25 @@ public class PlaneController : MonoBehaviour
         transform.Rotate(Vector3.forward, -roll);
 
         transform.position += transform.forward * throttleInput * Time.deltaTime;
+    }
+    //shooting mechanic
+    public void ShootBullet()
+    {
+        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        b.transform.position = gameObject.transform.position;
+
+    }
+
+    public void AttackCooldown()
+    {
+        if (timer < attackCooldown)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            ShootBullet();
+            timer = 0;
+        }
     }
 }

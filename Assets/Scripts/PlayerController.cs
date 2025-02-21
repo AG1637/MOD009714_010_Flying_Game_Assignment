@@ -1,9 +1,9 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
     void Update()
     {
         // Get input from keyboard or controller
@@ -16,5 +16,7 @@ public class CharacterMovement : MonoBehaviour
 
         // Apply movement to the character
         transform.Translate(movement);
+
+        
     }
 }
