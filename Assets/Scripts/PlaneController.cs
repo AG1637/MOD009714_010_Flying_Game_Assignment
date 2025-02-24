@@ -11,6 +11,7 @@ public class PlaneController : MonoBehaviour
     public float throttleSpeed = 10f;
     public float maxSpeed = 100f;
     public float minSpeed = 10f;
+    //Shooting mechanic
     public GameObject bulletPrefab;
     public float timer = 0;
     public float attackCooldown = 0.25f;
@@ -76,12 +77,12 @@ public class PlaneController : MonoBehaviour
         transform.position += transform.forward * throttleInput * Time.deltaTime;
     }
     //shooting mechanic
-    public void ShootBullet()
-    {
-        GameObject b = Instantiate(bulletPrefab) as GameObject;
-        b.transform.position = gameObject.transform.position;
+    //public void ShootBullet()
+    //{
+    //    GameObject b = Instantiate(bulletPrefab) as GameObject;
+    //    b.transform.position = gameObject.transform.position;
 
-    }
+    //}
 
     public void AttackCooldown()
     {
@@ -94,5 +95,20 @@ public class PlaneController : MonoBehaviour
             ShootBullet();
             timer = 0;
         }
+    }
+    public float bulletSpeed;
+    public float fireRate, bulletDamage;
+    public bool isAuto;
+
+    [Header("Initial Setup")]
+    public Transform bulletSpawnTransform;
+
+    void ShootBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnTransform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("WorldObjectHolder").transform);
+        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawnTransform.forward * bulletSpeed, ForceMode.Impulse);
+        bullet.GetComponent<Bullet>().damage = bulletDamage;
+
+        timer = 1;
     }
 }

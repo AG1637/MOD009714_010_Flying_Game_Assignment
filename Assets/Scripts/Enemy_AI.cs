@@ -25,6 +25,8 @@ public class Enemy_AI : MonoBehaviour
     {
         ChasePlayer();
         Patrol();
+        if (health <= 0)
+            Destroy(gameObject);
     }
 
     private void ChasePlayer()
@@ -52,4 +54,5 @@ public class Enemy_AI : MonoBehaviour
             }
         }
     }
+    public float health;
 }

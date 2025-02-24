@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Collectable> collectables = new List<Collectable>();
-
     private int CollectablesRemaining;
     public Collectable[] Collectables;
         

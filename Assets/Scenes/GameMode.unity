@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36325312, g: 0.29925704, b: 0.43792784, a: 1}
+  m_IndirectSpecularColor: {r: 0.363253, g: 0.2992568, b: 0.43792737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,6 +408,7 @@ MonoBehaviour:
   player: {fileID: 1706887225265095445}
   followRange: 500
   chaseSpeed: 20
+  health: 100
 --- !u!4 &869778358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 934248280987073058, guid: 7400535bcb7bd46409fc07bf0c901c3d,
@@ -1256,6 +1257,7 @@ GameObject:
   - component: {fileID: 1955205791}
   - component: {fileID: 1955205792}
   - component: {fileID: 1955205793}
+  - component: {fileID: 1955205794}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1437,6 +1439,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeCamera: {fileID: 1515139505}
+--- !u!114 &1955205794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955205787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c90764dcfd3f4588c2808c6ea4c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collectables: []
 --- !u!1 &1959249018
 GameObject:
   m_ObjectHideFlags: 0
