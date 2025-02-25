@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6797263255526109553}
   - component: {fileID: 6318940297430139149}
   - component: {fileID: 5927296941895546730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.405334, y: 1.405334, z: 1.7769043}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3228684107135607021}
@@ -116,8 +116,8 @@ GameObject:
   - component: {fileID: 3228684107135607021}
   - component: {fileID: 3460917642266259502}
   - component: {fileID: 201966254049349718}
-  - component: {fileID: 171998802464958406}
-  m_Layer: 0
+  - component: {fileID: 2157579096304319281}
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.11383127, y: 0.12735443, z: 0.26688963}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7934474778529267676}
@@ -162,7 +162,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -188,7 +188,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &171998802464958406
+--- !u!114 &2157579096304319281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,3 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7254605fd3f7f9e48be77d942ed19818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
+  damage: 0
+  lifeTime: 3

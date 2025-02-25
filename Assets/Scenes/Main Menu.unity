@@ -457,25 +457,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls:
+  m_text: 'Aim:
 
-    WASD to move
+    Fly through the rings to score points before time runs out,
+    avoid enemies and shoot targets to get extra time
+
+
+    Controls:
+
+    WASD to
+    move
 
     Left click to shoot
 
-    Z to change
-    camera angle
+    Z to change camera angle
 
-    X to change vehicle
+    X to change
+    vehicle
 
     C to change background
 
-
-    Aim:
-
-    Fly
-    through the rings to score points before time runs out, avoid enemies and shoot
-    targets to get extra time'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
         }
 
         //Show Win Game screen if zero collectables remaining
-        if (CollectablesRemaining == 15)
+        if (CollectablesRemaining == 10)
         {
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(2); // win game
         }
     }
 }

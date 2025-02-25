@@ -8,14 +8,16 @@ TagManager:
   - IglooScreen
   - 3D_UI_Element
   - PickUp
+  - Obstacle
+  - WorldObjectHolder
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - IglooScreen
   - IglooPlayer
