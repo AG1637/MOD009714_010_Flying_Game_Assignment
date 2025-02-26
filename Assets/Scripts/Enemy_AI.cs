@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy_AI : MonoBehaviour
 {
-    //Patrol between two points
+    [Header("Patrolling")]
     public Transform pointA;
     public Transform pointB;
     public float speed = 15f;
     private Vector3 currentTarget;
-    //Chase player
+
+    [Header("Chase player")]
     public Transform player;
     public float followRange = 1000f;
-    public float chaseSpeed = 30f;
+    public float chaseSpeed = 20f;
+
+    [Header("AttackPlayer")]
+    public float attackRange = 100f;
+    public float timer = 0;
+    public float attackCooldown = 1f;
+    public Transform bulletSpawnTransform;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 100;
+    [Header("Health")]
+    public float Enemyhealth = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +36,17 @@ public class Enemy_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChasePlayer();
+        //ChasePlayer();
         Patrol();
-        if (health <= 0)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackRange)
+        {
+            AttackCooldown();
+        }
+        if (Enemyhealth <= 0)
+        {
             Destroy(gameObject);
+        }
     }
 
     private void ChasePlayer()
@@ -54,5 +74,30 @@ public class Enemy_AI : MonoBehaviour
             }
         }
     }
-    public float health;
+
+    private void AttackCooldown()
+    {
+        if (timer < attackCooldown)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            AttackPlayer();
+            timer = 0;
+        }
+    }
+
+    private void AttackPlayer()
+    {
+        Debug.Log("Attacking player");
+        transform.LookAt(player);
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnTransform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("WorldObjectHolder").transform);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Vector3 direction = (player.position - bulletSpawnTransform.position).normalized;
+            rb.AddForce(direction * bulletSpeed, ForceMode.Impulse);
+        }
+    }
 }

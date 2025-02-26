@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         else if (timeRemaining < 0)
         {
             timeRemaining = 0;
-            SceneManager.LoadSceneAsync(3); // lose game
+            SceneManager.LoadScene(3); // lose game
         }
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);

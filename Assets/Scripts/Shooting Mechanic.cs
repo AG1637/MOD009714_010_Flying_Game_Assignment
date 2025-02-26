@@ -5,10 +5,10 @@ using UnityEngine;
 public class ShootingMechanic : MonoBehaviour
 {
     [Header("Bullet Variables")]
-    public float bulletSpeed;
-    public float fireRate, bulletDamage;
+    public float bulletSpeed = 100;
+    public float fireRate = 0.2f;
     public bool isAuto;
-    public float timer;
+    private float timer;
 
     [Header("Initial Setup")]
     public Transform bulletSpawnTransform;
@@ -42,7 +42,6 @@ public class ShootingMechanic : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnTransform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("WorldObjectHolder").transform); //spawns bullet
         bullet.GetComponent<Rigidbody>().AddForce(bulletSpawnTransform.forward * bulletSpeed, ForceMode.Impulse); //adds force
-        bullet.GetComponent<Bullet>().damage = bulletDamage;
         timer = 1;
     }
 }

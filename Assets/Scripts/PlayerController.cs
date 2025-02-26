@@ -1,9 +1,13 @@
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    [SerializeField] public float health = 100;
+    [SerializeField] TextMeshProUGUI healthText;
     void Update()
     {
         // Get input from keyboard or controller
@@ -17,6 +21,9 @@ public class CharacterMovement : MonoBehaviour
         // Apply movement to the character
         transform.Translate(movement);
 
-        
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 }

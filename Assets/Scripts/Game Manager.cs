@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         CollectablesRemaining = Collectables.Length;
         foreach (Collectable collectable in Collectables)
         {
-            Debug.Log(CollectablesRemaining);
+            //Debug.Log(CollectablesRemaining);
         }
 
         //Show Win Game screen if zero collectables remaining

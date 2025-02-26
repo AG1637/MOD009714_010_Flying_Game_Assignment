@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public float damage = 5;
     public float lifeTime = 3;
@@ -13,15 +13,15 @@ public class Bullet : MonoBehaviour
 
         if (lifeTime < 0)
         {
-            Destroy (gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Enemy_AI>() != null)
+        if (other.GetComponent<CharacterMovement>() != null)
         {
-            other.GetComponent<Enemy_AI>().Enemyhealth -= damage;
+            other.GetComponent<CharacterMovement>().health -= damage;
             Destroy(gameObject);
         }
     }
