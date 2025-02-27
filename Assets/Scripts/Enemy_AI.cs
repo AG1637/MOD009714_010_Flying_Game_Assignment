@@ -9,18 +9,19 @@ public class Enemy_AI : MonoBehaviour
     [Header("Patrolling")]
     public Transform pointA;
     public Transform pointB;
-    public float speed = 15f;
+    public float speed = 30f;
     private Vector3 currentTarget;
 
     [Header("Chase player")]
     public Transform player;
-    public float followRange = 1000f;
-    public float chaseSpeed = 20f;
+    public float followRange = 115f;
+    public float chaseSpeed = 75f;
+    public float tooClose = 30f;
 
     [Header("AttackPlayer")]
     public float attackRange = 100f;
     public float timer = 0;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 3f;
     public Transform bulletSpawnTransform;
     public GameObject bulletPrefab;
     public float bulletSpeed = 100;
@@ -36,7 +37,7 @@ public class Enemy_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ChasePlayer();
+        ChasePlayer();
         Patrol();
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange)
@@ -56,6 +57,11 @@ public class Enemy_AI : MonoBehaviour
         if (distancetoplayer <= followRange)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, chaseSpeed * Time.deltaTime);
+        }
+        if (distancetoplayer <= tooClose)
+        {
+            chaseSpeed = 40f;
+            speed = 50f;
         }
     }
 

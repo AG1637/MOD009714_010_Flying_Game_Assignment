@@ -13,16 +13,19 @@ public class EnemyBullet : MonoBehaviour
 
         if (lifeTime < 0)
         {
-            Destroy(gameObject);
+            Destroy (gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<CharacterMovement>() != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<CharacterMovement>().health -= damage;
-            Destroy(gameObject);
+            if (other.GetComponent<PlayerHealth>() != null)
+            {
+                other.GetComponent<PlayerHealth>().health -= damage;
+                Destroy(gameObject);
+            }
         }
     }
 }

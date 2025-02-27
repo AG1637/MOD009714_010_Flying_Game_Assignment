@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Time's Up!.unity
     guid: 054537ac19340604788e1ce882f4620b
+  - enabled: 1
+    path: Assets/Scenes/PlayerDied.unity
+    guid: fbd39fb6fb5654f4a968396475f2d48b
   - enabled: 0
     path: Assets/Scenes/Lose Game.unity
     guid: 5cadfb3f9bdb07846a574e013d76cd84

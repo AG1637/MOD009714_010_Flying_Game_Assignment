@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootingMechanic : MonoBehaviour
 {
     [Header("Bullet Variables")]
-    public float bulletSpeed = 100;
+    public float bulletSpeed = 150;
     public float fireRate = 0.2f;
     public bool isAuto;
     private float timer;

@@ -10,6 +10,7 @@ TagManager:
   - PickUp
   - Obstacle
   - WorldObjectHolder
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

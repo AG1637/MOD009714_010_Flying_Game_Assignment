@@ -1,4 +1,5 @@
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -67,4 +68,5 @@ public class PlaneController : MonoBehaviour
 
         transform.position += transform.forward * throttleInput * Time.deltaTime;
     }
+        
 }
