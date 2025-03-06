@@ -7,7 +7,6 @@ public class ShootingMechanic : MonoBehaviour
     [Header("Bullet Variables")]
     public float bulletSpeed = 150;
     public float fireRate = 0.2f;
-    public bool isAuto;
     private float timer;
 
     [Header("Initial Setup")]
@@ -20,22 +19,16 @@ public class ShootingMechanic : MonoBehaviour
         {
             timer -= Time.deltaTime / fireRate;
         }
-
-
-        if (isAuto)
+       
+        if (Input.GetButton("Fire1") && timer <= 0) //pressing left mouse button shoots
         {
-            if (Input.GetButton("Fire1") && timer <= 0) //holding left mouse button shoots
-            {
-                Shoot();
-            }
+            Shoot();
         }
-        else
+        if (Input.GetKeyDown(KeyCode.Space) && timer <= 0) //pressing spacebar shoots
         {
-            if (Input.GetButtonDown("Fire1") && timer <= 0) //clicking left mouse button shoots
-            {
-                Shoot();
-            }
+            Shoot();
         }
+
     }
 
     void Shoot()

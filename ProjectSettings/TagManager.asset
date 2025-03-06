@@ -11,6 +11,9 @@ TagManager:
   - Obstacle
   - WorldObjectHolder
   - EnemyBullet
+  - Target
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

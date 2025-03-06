@@ -17,11 +17,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //temp damage system
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            health -= 10;
-        }
         playerHealth();
     }
 

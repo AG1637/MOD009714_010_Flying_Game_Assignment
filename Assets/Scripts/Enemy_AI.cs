@@ -9,17 +9,17 @@ public class Enemy_AI : MonoBehaviour
     [Header("Patrolling")]
     public Transform pointA;
     public Transform pointB;
-    public float speed = 30f;
+    public float speed = 50f;
     private Vector3 currentTarget;
 
     [Header("Chase player")]
     public Transform player;
-    public float followRange = 115f;
-    public float chaseSpeed = 75f;
+    public float followRange = 25f;
+    public float chaseSpeed = 50f;
     public float tooClose = 30f;
 
     [Header("AttackPlayer")]
-    public float attackRange = 100f;
+    public float attackRange = 250f;
     public float timer = 0;
     public float attackCooldown = 3f;
     public Transform bulletSpawnTransform;
@@ -96,7 +96,6 @@ public class Enemy_AI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        Debug.Log("Attacking player");
         transform.LookAt(player);
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnTransform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("WorldObjectHolder").transform);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();

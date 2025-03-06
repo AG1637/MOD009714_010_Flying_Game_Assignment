@@ -468,16 +468,14 @@ MonoBehaviour:
     WASD to move
 
     Left
-    click to shoot
+    click/Space to shoot
 
     Z to change camera angle
 
-    X to switch between plane and
-    hot air balloon
+    X to switch between plane
+    and hot air balloon
 
-    C to change background
-
-'
+    C to change background'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
