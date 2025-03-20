@@ -10,13 +10,13 @@ public class TargetSpawner : MonoBehaviour
  
     void Start()
     {
-        InvokeRepeating("SpawnTarget", Random.Range(5, 10), Random.Range(7, 10));
+        InvokeRepeating("SpawnTarget", Random.Range(1, 2), Random.Range(1, 2));
     }
 
     void SpawnTarget()
     {
         Vector3 randomPosition = GenerateRandomPosition();
-        Instantiate(targetPrefab, randomPosition, Quaternion.identity);
+        Instantiate(targetPrefab, randomPosition, Quaternion.identity); 
         Debug.Log("Target Spawned");
     }
 

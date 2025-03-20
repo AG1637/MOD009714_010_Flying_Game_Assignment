@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,13 +14,16 @@ public class Target : MonoBehaviour
     public PlayerHealth playerHealth;
     public GameObject player;
     public GameObject healthIncreasedText;
-
+    private int randomNumber;
+    private GameObject text;
+    private TextMeshPro collectableText;
+    
     private void Start()
     {
-        timerCanvas = GameObject.FindGameObjectWithTag("Timer"); //reference to timer scipt to increase time
+        timerCanvas = GameObject.FindGameObjectWithTag("Timer"); //reference to timer script to increase time
         timer = timerCanvas.GetComponent<Timer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = GetComponent<PlayerHealth>(); //reference to timer scipt to increase health
+        playerHealth = player.GetComponent<PlayerHealth>(); //reference to player health script to increase health
         Invoke("DestroyTarget", 10f); //Destroys gameobject after 10 seconds
     }
     private void OnTriggerEnter(Collider other)
@@ -29,23 +33,58 @@ public class Target : MonoBehaviour
             Debug.Log("Target hit");
             audioSource = GetComponent<AudioSource>();
             audioSource.Play();
-            IncreaseTime();
-            IncreaseHealth();
+            PlayerBoost();
             Destroy(gameObject);
         }
     }
 
     private void IncreaseTime()
     {
-        timer.IncreaseTime(10);
-        Instantiate(timeIncreasedText, transform.position, Quaternion.identity);
+        float timeAdded = timer.IncreaseTime(10);
+        text = Instantiate(timeIncreasedText, transform.position, Quaternion.identity);
+        text.transform.LookAt(player.transform);
+        collectableText = text.GetComponentInChildren<TextMeshPro>();
+        collectableText.text = $"+{(int)timeAdded} Seconds";
     }
 
     private void IncreaseHealth()
     {
-        playerHealth.health += 10;
-        Instantiate(healthIncreasedText, transform.position, Quaternion.identity);
+        int healthAdded = 0;
+        int healthToAdd = 10;
+        playerHealth.health += healthToAdd;
+        if (playerHealth.health > playerHealth.maxHealth)
+        {
+            healthAdded = 0;
+            playerHealth.health = playerHealth.maxHealth;
+        }
+        if (playerHealth.health <= playerHealth.maxHealth - healthToAdd)
+        {
+            healthAdded = healthToAdd;
+        }
+        if (playerHealth.health > playerHealth.maxHealth - healthToAdd && playerHealth.health  <= playerHealth.maxHealth)
+        {
+            healthAdded = playerHealth.maxHealth - playerHealth.health;
+        }
+        text = Instantiate(healthIncreasedText, transform.position, Quaternion.identity);
+        text.transform.LookAt(player.transform);
+        collectableText = text.GetComponentInChildren<TextMeshPro>();
+        collectableText.text = $"+{healthAdded} Health";
     }
+
+    private void PlayerBoost()
+    {
+        randomNumber = Random.Range(1, 3); //Generates a random integer 1 or 2
+        Debug.Log(randomNumber);
+        if (randomNumber == 1) // && playerHealth.health < 95)
+        {
+            IncreaseHealth();
+        }
+        if (randomNumber == 2) // && timer.timeRemaining < 110)
+        {
+            IncreaseTime();
+        }
+    }
+
     private void DestroyTarget()
     {
         Destroy(gameObject);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float damage = 5;
+    public int damage = 5;
     public float lifeTime = 3;
     // Start is called before the first frame update
     private void Update()

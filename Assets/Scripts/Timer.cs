@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 public class Timer : MonoBehaviour
 {
@@ -31,8 +32,26 @@ public class Timer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    public void IncreaseTime(float TimeToAdd)
+    public float IncreaseTime(float TimeToAdd)
     {
-        timeRemaining += TimeToAdd;
+        float timeAdded = 0;
+        timeAdded = 120 - timeRemaining;
+        if (timeAdded > TimeToAdd)
+        {
+            timeAdded = TimeToAdd;
+        }
+        if (timeRemaining < 120)
+        {
+            timeRemaining += TimeToAdd;
+        }
+        if (timeRemaining >= 110 && timeRemaining <= 120)
+        {
+            timeRemaining = 120;
+        }
+        if (timeRemaining >= 120)
+        {
+            timeRemaining = 120;
+        }
+        return timeAdded;   
     }
 }
