@@ -68,7 +68,11 @@ public class Target : MonoBehaviour
         text = Instantiate(healthIncreasedText, transform.position, Quaternion.identity);
         text.transform.LookAt(player.transform);
         collectableText = text.GetComponentInChildren<TextMeshPro>();
-        collectableText.text = $"+{healthAdded} Health";
+        if (healthAdded == 0)
+        {
+            collectableText.text = $"Max Health";
+        }
+        else collectableText.text = $"+{healthAdded} Health";
     }
 
     private void PlayerBoost()

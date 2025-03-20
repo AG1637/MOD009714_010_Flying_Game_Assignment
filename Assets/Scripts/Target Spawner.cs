@@ -10,7 +10,7 @@ public class TargetSpawner : MonoBehaviour
  
     void Start()
     {
-        InvokeRepeating("SpawnTarget", Random.Range(1, 2), Random.Range(1, 2));
+        InvokeRepeating("SpawnTarget", Random.Range(5, 10), Random.Range(7, 10));
     }
 
     void SpawnTarget()
